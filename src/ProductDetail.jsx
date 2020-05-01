@@ -1,8 +1,8 @@
 import React from "react";
 
 function ProductDetail(props) {
-  const { name, collection, ingredient_ids } = props.product;
-  return <div>{`${name}, ${collection}, ${ingredient_ids}`}</div>;
+  const { name, collection } = props.product;
+  return <div>{`${name}, ${collection}`}</div>;
 }
 
 export default ProductDetail;
