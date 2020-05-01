@@ -13,15 +13,19 @@ function Listing() {
       <div className="ingredients">
         {ingredients.ingredients.map((ingredient) => (
           <a onClick={() => setActiveIngredient(ingredient.id)}>
-            {ingredient.name}
+            {`${ingredient.name} `}
           </a>
         ))}
       </div>
       <hr />
       <div className="products">
-        {products.products.map((product) => (
-          <ProductDetail product={product} key={product.id} />
-        ))}
+        {products.products
+          .filter((product) =>
+            product.ingredient_ids.includes(activeIngredient)
+          )
+          .map((product) => (
+            <ProductDetail product={product} key={product.id} />
+          ))}
       </div>
     </div>
   );
