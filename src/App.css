@@ -28,7 +28,31 @@
   color: #61dafb;
 }
 
-.active {
+.listing-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.listing-page .ingredients,
+.listing-page .products {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.listing-page .ingredients {
+  flex: 1;
+}
+.listing-page .products {
+  flex: 3;
+}
+
+.ingredient {
+  cursor: pointer;
+}
+.ingredient.active {
   font-weight: bold;
 }
 
