@@ -16,29 +16,32 @@ function Listing() {
     }
     setActiveIngredient(id);
   }
+
+  const filterdProducts = productList.filter(
+    (product) =>
+      !activeIngredient || product.ingredient_ids.includes(activeIngredient)
+  );
   return (
-    <div>
+    <div className="listing-page">
       <div className="ingredients">
         {ingredientList.map((ingredient) => (
-          <span
+          <div
             onClick={() => onClickIngredient(ingredient.id)}
-            className={ingredient.id === activeIngredient ? "active" : ""}
+            className={
+              ingredient.id === activeIngredient
+                ? "ingredient active"
+                : "ingredient"
+            }
           >
             {`${ingredient.name} `}
-          </span>
+          </div>
         ))}
       </div>
-      <hr />
       <div className="products">
-        {productList
-          .filter(
-            (product) =>
-              !activeIngredient ||
-              product.ingredient_ids.includes(activeIngredient)
-          )
-          .map((product) => (
-            <ProductDetail product={product} key={product.id} />
-          ))}
+        {!filterdProducts.length && <span>No products matching filter</span>}
+        {filterdProducts.map((product) => (
+          <ProductDetail product={product} key={product.id} />
+        ))}
       </div>
     </div>
   );
