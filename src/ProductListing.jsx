@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 import products from "./data/products.json";
 import ingredients from "./data/ingredients.json";
 
